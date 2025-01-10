@@ -1,0 +1,32 @@
+import java.nio.file.Path
+import java.nio.file.Paths
+import org.apache.tools.ant.taskdefs.condition.Os
+import groovy.xml.StreamingMarkupBuilder
+import groovy.xml.XmlSlurper
+
+apply from: "gradle/common/gradle_common.gradle"
+
+task removeEntryFromSystemGroup(){
+    println("Invoking the removeEntryFromsystemGeroup----->")
+}
+
+gradle.taskGraph.beforeTask { Task task ->
+    println "executing $task ..."
+}
+
+gradle.taskGraph.afterTask { Task task, TaskState state ->
+    if (state.failure) {
+        println "FAILED"
+    }
+    else {
+        println "done"
+    }
+}
+
+
+
+//defaultTasks 'removeEntryFromSystemGroup'
+task getSystemPropertyFiles(){
+    getSystemPropertyFiles()
+}
+defaultTasks 'getSystemPropertyFiles'
